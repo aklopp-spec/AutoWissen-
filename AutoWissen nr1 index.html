@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Wissen für Einsteiger</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18231f;
+      --muted: #59665f;
+      --paper: #f2f1eb;
+      --accent: #e86436;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.6 "Segoe UI", sans-serif;
+    }
+
+    header {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    header span { color: var(--accent); }
+
+    nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+    nav a { color: var(--muted); font-size: .9rem; text-decoration: none; }
+    nav a:hover { color: var(--accent); }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem 1.5rem 4rem;
+    }
+
+    .hero {
+      min-height: 390px;
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(1.5rem, 6vw, 4rem);
+      border-radius: 18px;
+      color: white;
+      background: linear-gradient(90deg, rgb(15 24 20 / 82%), rgb(15 24 20 / 8%)),
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=85") center 55% / cover;
+    }
+
+    .eyebrow {
+      color: #ffd1bd;
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 620px;
+      margin: .4rem 0;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1;
+    }
+
+    .hero p { max-width: 440px; margin-bottom: 0; color: #f1f1ed; }
+
+    .lesson {
+      max-width: 700px;
+      margin: 2rem auto 0;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border-left: 5px solid var(--accent);
+      border-radius: 4px 12px 12px 4px;
+      background: white;
+      box-shadow: 0 12px 35px rgb(24 35 31 / 7%);
+    }
+
+    h2 { margin: 0 0 .5rem; font-size: 1.7rem; }
+    .lesson p { margin: 0; color: var(--muted); }
+
+    .content-section { margin-top: 4rem; }
+    .section-intro { max-width: 660px; margin-top: 0; color: var(--muted); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-card {
+      padding: 1.5rem;
+      border: 1px solid #e1e2da;
+      border-radius: 12px;
+      background: white;
+    }
+
+    .card-image {
+      display: block;
+      width: 100%;
+      height: 145px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .info-card .number { color: var(--accent); font-size: .8rem; font-weight: 800; }
+    .info-card h3 { margin: .4rem 0; }
+    .info-card p { margin: 0; color: var(--muted); }
+    .info-card summary { display: block; cursor: pointer; }
+    .info-card summary::-webkit-details-marker { display: none; }
+    .info-card summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .card-title { display: block; margin: .4rem 0; font-size: 1.17em; font-weight: 700; }
+    .card-teaser { display: block; color: var(--muted); }
+    .expand-label { display: block; margin-top: .8rem; color: var(--accent); font-size: .9rem; font-weight: 700; }
+    .expand-label::after { content: "Mehr erfahren"; }
+    .info-card[open] .expand-label::after { content: "Weniger anzeigen"; }
+    .info-card .detail-text { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e1e2da; }
+
+    .note {
+      margin-top: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: 10px;
+      background: #e6e9df;
+      color: var(--ink);
+    }
+
+    footer { padding: 1.5rem; color: var(--muted); text-align: center; }
+
+    @media (max-width: 600px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .cards { grid-template-columns: 1fr; }
+      .hero { min-height: 340px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>Auto<span>Wissen</span></div>
+    <nav aria-label="Seitennavigation">
+      <a href="#bauteile">Bauteile</a>
+      <a href="#antriebe">Antriebe</a>
+      <a href="#begriffe">Fachbegriffe</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Einfach erklärt</div>
+        <h1>Auto-Wissen für Einsteiger</h1>
+        <p>Entdecke, was ein Auto antreibt – verständlich und ganz ohne Fachchinesisch.</p>
+      </div>
+    </section>
+
+    <section class="lesson">
+      <h2>Wie funktioniert ein Auto?</h2>
+      <p>Ein Auto wandelt Energie in Bewegung um. Der Motor liefert die Kraft, der Antrieb leitet sie zu den Rädern und die Reifen übertragen sie auf die Straße. Gleichzeitig sorgen Lenkung und Bremsen dafür, dass das Auto kontrolliert fahren und anhalten kann.</p>
+    </section>
+
+    <section class="content-section" id="bauteile">
+      <h2>Die wichtigsten Bauteile</h2>
+      <p class="section-intro">Viele Teile arbeiten zusammen. Diese drei begegnen dir besonders oft, wenn es um die Bewegung eines Autos geht.</p>
+      <div class="cards">
+        <details class="info-card">
+          <summary>
+            <img class="card-image" src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80" alt="Blick in den Motorraum eines Autos" loading="lazy">
+            <span class="number">01 / KRAFT</span>
+            <span class="card-title">Der Motor</span>
+            <span class="card-teaser">Er wandelt Energie um. Ein Verbrennungsmotor nutzt Kraftstoff, ein Elektromotor elektrische Energie aus einer Batterie.</span>
+            <span class="expand-label" aria-hidden="true"></span>
+          </summary>
+          <p class="detail-text">Bei einem Benzin- oder Dieselmotor wird Kraftstoff im Inneren des Motors verbrannt. Dabei entsteht Druck, der Kolben bewegt. Eine Kurbelwelle wandelt diese Bewegung in eine Drehbewegung um. Beim Benzinmotor entzündet meist ein Zündfunke das Kraftstoff-Luft-Gemisch; beim Dieselmotor entzündet sich der Kraftstoff durch die hohe Temperatur der stark zusammengedrückten Luft.</p>
+          <p class="detail-text">Diese Drehbewegung wird über das Getriebe und weitere Antriebsteile zu den Rädern geleitet. Das Getriebe hilft dabei, die Drehzahl und Kraft passend zur Fahrsituation zu übertragen.</p>
+          <p class="detail-text">Ein Elektromotor funktioniert anders: Strom aus der Batterie erzeugt ein Magnetfeld, das den Motor in Drehung versetzt. Ein Elektroauto braucht deshalb keinen Verbrennungsmotor und keine Abgasanlage.</p>
+        </details>
+        <details class="info-card">
+          <summary>
+            <img class="card-image" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80" alt="Auto als Beispiel für Antrieb und Getriebe" loading="lazy">
+            <span class="number">02 / ÜBERTRAGUNG</span>
+            <span class="card-title">Getriebe und Antrieb</span>
+            <span class="card-teaser">Sie bringen die Motorkraft zu den Rädern. Ein Getriebe passt die Übersetzung an Geschwindigkeit und Fahrsituation an.</span>
+            <span class="expand-label" aria-hidden="true"></span>
+          </summary>
+          <p class="detail-text">Der Motor dreht nicht immer gleich schnell. Das Getriebe wählt deshalb eine passende Übersetzung: Ein niedriger Gang hilft beim Anfahren und an Steigungen; höhere Gänge eignen sich für schnelleres Fahren.</p>
+          <p class="detail-text">Der Antrieb legt außerdem fest, welche Räder die Kraft erhalten. Bei Frontantrieb sind es die Vorderräder, bei Heckantrieb die Hinterräder. Allradantrieb kann die Kraft an beide Achsen verteilen.</p>
+        </details>
+        <details class="info-card">
+          <summary>
+            <img class="card-image" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="Nahaufnahme eines Reifens" loading="lazy">
+            <span class="number">03 / KONTAKT</span>
+            <span class="card-title">Die Reifen</span>
+            <span class="card-teaser">Nur eine kleine Fläche jedes Reifens berührt die Straße. Dort werden Antrieb, Lenkung und Bremsen wirksam.</span>
+            <span class="expand-label" aria-hidden="true"></span>
+          </summary>
+          <p class="detail-text">Reifen übertragen Kräfte zwischen Auto und Straße. Ihr Profil hilft dabei, Wasser auf nasser Fahrbahn abzuleiten. Ist das Profil stark abgenutzt, kann der Reifen den Kontakt zur Straße schlechter halten.</p>
+          <p class="detail-text">Auch der richtige Reifendruck ist wichtig: Zu wenig oder zu viel Druck kann das Fahrverhalten und den Reifenverschleiß beeinflussen. Den empfohlenen Druck findest du in der Betriebsanleitung oder am Fahrzeug.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" id="antriebe">
+      <h2>Drei Arten des Antriebs</h2>
+      <p class="section-intro">Der Antrieb beschreibt, wie ein Fahrzeug seine Energie nutzt, um die Räder in Bewegung zu setzen.</p>
+      <div class="cards">
+        <details class="info-card">
+          <summary>
+            <span class="number">KRAFTSTOFF</span>
+            <span class="card-title">Verbrennungsmotor</span>
+            <span class="card-teaser">Benzin oder Diesel wird im Motor verbrannt. Dabei entsteht Energie, die das Auto antreibt.</span>
+            <span class="expand-label" aria-hidden="true"></span>
+          </summary>
+          <p class="detail-text">Im Motor reagiert Kraftstoff mit Sauerstoff aus der Luft. Die dabei entstehende Wärme und der Druck bewegen Kolben; daraus wird eine Drehbewegung. Benzinmotoren nutzen meist Zündkerzen, während sich Diesel durch die starke Verdichtung der Luft entzündet.</p>
+          <p class="detail-text">Die Abgase strömen durch die Abgasanlage. Ein Katalysator und weitere Bauteile verringern bestimmte Schadstoffe, verhindern aber nicht alle Emissionen.</p>
+        </details>
+        <details class="info-card">
+          <summary>
+            <img class="card-image" src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80" alt="Elektroauto an einer Ladestation" loading="lazy">
+            <span class="number">STROM</span>
+            <span class="card-title">Elektromotor</span>
+            <span class="card-teaser">Eine Batterie liefert Strom für den Elektromotor. Beim Bremsen kann Energie zurückgewonnen werden.</span>
+            <span class="expand-label" aria-hidden="true"></span>
+          </summary>
+          <p class="detail-text">Die Batterie speichert elektrische Energie. Ein Steuergerät regelt, wie viel Strom zum Elektromotor fließt. Dort erzeugen elektrische und magnetische Kräfte eine Drehbewegung, die über den Antrieb die Räder bewegt.</p>
+          <p class="detail-text">Beim sogenannten regenerativen Bremsen arbeitet der Motor teilweise wie ein Generator: Er wandelt einen Teil der Bewegungsenergie in elektrische Energie um und speist sie in die Batterie zurück. Das ersetzt nicht jede Bremsung, kann aber Energie zurückgewinnen.</p>
+        </details>
+        <details class="info-card">
+          <summary>
+            <span class="number">KOMBINATION</span>
+            <span class="card-title">Hybrid</span>
+            <span class="card-teaser">Ein Hybridauto kombiniert einen Verbrennungs- mit einem Elektromotor. Ob es an einer Steckdose geladen werden kann, hängt vom Hybridtyp ab.</span>
+            <span class="expand-label" aria-hidden="true"></span>
+          </summary>
+          <p class="detail-text">Ein Hybridfahrzeug hat sowohl einen Verbrennungsmotor als auch einen Elektromotor. Je nach Bauart können beide Motoren gemeinsam oder in unterschiedlichen Fahrsituationen arbeiten.</p>
+          <p class="detail-text">Ein Plug-in-Hybrid hat eine größere Batterie, die zusätzlich an einer Steckdose geladen werden kann. Andere Hybridautos laden ihre Batterie während der Fahrt, zum Beispiel beim Bremsen. Die genaue Funktionsweise hängt vom Modell ab.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" id="begriffe">
+      <h2>PS und Drehmoment: Was ist der Unterschied?</h2>
+      <p class="section-intro">Beide Werte beschreiben Eigenschaften eines Motors, aber nicht dasselbe.</p>
+      <div class="cards">
+        <details class="info-card">
+          <summary>
+            <span class="number">LEISTUNG</span>
+            <span class="card-title">PS</span>
+            <span class="card-teaser">PS ist eine gebräuchliche Einheit für die Leistung. Sie beschreibt, wie viel Arbeit ein Motor in einer bestimmten Zeit verrichten kann.</span>
+            <span class="expand-label" aria-hidden="true"></span>
+          </summary>
+          <p class="detail-text">Leistung beschreibt, wie schnell Arbeit verrichtet oder Energie umgewandelt wird. Bei Autos wird sie oft in Pferdestärken (PS) angegeben; die offizielle Einheit ist Kilowatt (kW). Eine höhere Leistung kann helfen, schneller zu beschleunigen oder eine höhere Geschwindigkeit zu erreichen, aber auch Fahrzeuggewicht und Getriebe spielen mit.</p>
+        </details>
+        <details class="info-card">
+          <summary>
+            <span class="number">DREHKRAFT</span>
+            <span class="card-title">Drehmoment</span>
+            <span class="card-teaser">Das Drehmoment wird in Newtonmetern (Nm) angegeben. Es beschreibt die Drehwirkung, die der Motor auf seine Welle ausübt.</span>
+            <span class="expand-label" aria-hidden="true"></span>
+          </summary>
+          <p class="detail-text">Stell dir einen Schraubenschlüssel vor: Je weiter außen du drückst, desto größer ist die Drehwirkung. Beim Motor entsteht das Drehmoment an der Kurbelwelle. Das Getriebe kann die Drehwirkung an den Rädern verändern, indem es Kraft und Drehzahl unterschiedlich übersetzt.</p>
+        </details>
+        <details class="info-card">
+          <summary>
+            <span class="number">ZUSAMMENSPIEL</span>
+            <span class="card-title">Beide Werte zählen</span>
+            <span class="card-teaser">Wie sich ein Auto anfühlt, hängt nicht nur von einer Zahl ab. Auch Gewicht, Getriebe und Drehzahl spielen eine Rolle.</span>
+            <span class="expand-label" aria-hidden="true"></span>
+          </summary>
+          <p class="detail-text">PS und Drehmoment hängen zusammen, beschreiben aber verschiedene Dinge. Die Leistung ergibt sich aus Drehmoment und Drehzahl. Deshalb sollte man beim Vergleichen von Autos auch darauf achten, bei welcher Drehzahl ein Motor seine Werte erreicht.</p>
+          <p class="detail-text">Ein leichteres Auto kann sich mit derselben Motorleistung anders bewegen als ein schwereres. Auch Übersetzung, Reifen und die Abstimmung des Fahrzeugs beeinflussen, wie kräftig oder schnell es sich anfühlt.</p>
+        </details>
+      </div>
+      <div class="note"><strong>Merke:</strong> PS beschreibt Leistung, Nm beschreibt Drehmoment. Für den Alltag sind außerdem Fahrzeuggewicht und Übersetzung wichtig.</div>
+    </section>
+  </main>
+  <footer>AutoWissen · Grundlagen rund ums Auto, einfach erklärt.</footer>
+</body>
+</html>
